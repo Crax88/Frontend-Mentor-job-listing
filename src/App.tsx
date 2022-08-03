@@ -45,6 +45,17 @@ function App() {
       .then((data) => setJobs(data));
   }, []);
 
+  const filterJobs = (jobs: TJob[]): TJob[] => {
+    if (!filters.length) {
+      return jobs;
+    }
+
+    return jobs.filter((job) => {
+      const jobFilters = [job.role, job.level, ...job.languages, ...job.tools];
+      return filters.every((filter) => jobFilters.includes(filter));
+    });
+  };
+
   return (
     <>
       <Header />
@@ -54,7 +65,7 @@ function App() {
           onRemoveFilter={handleRemoveFilter}
           onClearFilter={handleClearFilters}
         />
-        <JobsList jobs={jobs} onSelectFilter={handleSelectFilter} />
+        <JobsList jobs={filterJobs(jobs)} onSelectFilter={handleSelectFilter} />
       </div>
     </>
   );
