@@ -1,7 +1,9 @@
+import { Header } from "./components/Header";
+
 function App() {
   return (
     <>
-      <header></header>
+      <Header />
       <div className="container">
         <div className="filter-panel">
           <div className="filter-panel_list">
