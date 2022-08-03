@@ -226,6 +226,10 @@ body {
 
 
 @media(max-width: 768px) {
+  .app-header {
+    background-image: url('./assets/images/bg-header-mobile.svg');
+  }
+
   .job-card {
     flex-direction: column;
     align-items: baseline;
