@@ -20,7 +20,11 @@ export const FilterPanel = ({
     <Card className="filter-panel">
       <div className="filter-panel_list">
         {filters.map((filter) => (
-          <Badge key={filter} variant="clearable" onClear={onRemoveFilter}>
+          <Badge
+            key={filter}
+            variant="clearable"
+            onClear={() => onRemoveFilter(filter)}
+          >
             {filter}
           </Badge>
         ))}
