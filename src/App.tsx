@@ -1,45 +1,60 @@
+import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
+import { FilterPanel } from "./components/FilterPanel";
+import { JobsList } from "./components/JobsList";
+
+export type TJob = {
+  id: number;
+  company: string;
+  logo: string;
+  new: boolean;
+  featured: boolean;
+  position: string;
+  role: string;
+  level: string;
+  postedAt: string;
+  contract: string;
+  location: string;
+  languages: string[];
+  tools: string[];
+};
+
+export type TFilter = string;
 
 function App() {
+  const [jobs, setJobs] = useState<TJob[]>([]);
+  const [filters, setFilters] = useState<TFilter[]>([]);
+
+  const handleSelectFilter = (filter: TFilter) => {
+    if (!filters.includes(filter)) {
+      setFilters((prev) => prev.concat(filter));
+    }
+  };
+
+  const handleRemoveFilter = (filter: TFilter) => {
+    setFilters((prev) => prev.filter((el) => el !== filter));
+  };
+
+  const handleClearFilters = () => {
+    setFilters([]);
+  };
+
+  useEffect(() => {
+    fetch("./data/data.json")
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
+
   return (
     <>
       <Header />
       <div className="container">
-        <div className="filter-panel">
-          <div className="filter-panel_list">
-            <span>fdfds</span>
-            <span>fdfds</span>
-            <span>fdfds</span>
-            <span>fdfds</span>
-          </div>
-          <button className="filter-panel_btn">Clear</button>
-        </div>
-        <div className="jobs-container">
-          <div className="card">
-            <img className="card_img" src="./images/account.svg" alt="" />
-            <div className="card_info">
-              <div className="card_info_main">
-                <h3>Account</h3>
-                <div>IsNew</div>
-                <div>FEATURED</div>
-              </div>
-              <div className="card_info_position">
-                Senior Frontend Developer
-              </div>
-              <div className="card_info_meta">
-                <span>1d ago</span>
-                <span>Contract</span>
-                <span>USA only</span>
-              </div>
-            </div>
-            <div className="card_tags">
-              <span>CSS</span>
-              <span>React</span>
-              <span>Node</span>
-            </div>
-          </div>
-          <div className="card card--featured">fdsfds</div>
-        </div>
+        <FilterPanel
+          filters={filters}
+          onRemoveFilter={handleRemoveFilter}
+          onClearFilter={handleClearFilters}
+        />
+        <JobsList jobs={jobs} onSelectFilter={handleSelectFilter} />
       </div>
     </>
   );
