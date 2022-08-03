@@ -10,7 +10,7 @@ type TProps = {
 export const JobCard = ({ job, onSelectFilter }: TProps) => {
   const jobTags = [job.role, job.level, ...job.languages, ...job.tools];
   return (
-    <Card isFeatured={job.featured}>
+    <Card isFeatured={job.featured} className="job-card">
       <img className="job-img" src={job.logo} alt={job.company} />
       <div className="job-info">
         <div className="job-info_main">
