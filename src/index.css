@@ -47,6 +47,70 @@ body {
   padding: 0 20px;
 }
 
+.badge {
+  display: flex;
+  align-items: center;
+  background-color: var(--grey-200);
+  color: var(--primary);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  min-height: 26px;
+}
+
+.badge>span {
+  padding: 0.25rem 1rem;
+}
+
+.badge:hover {
+  color: var(--grey-100);
+  background-color: var(--primary);
+}
+
+.badge.badge--light {
+  font-weight: var(--fw-bold);
+}
+
+.badge.badge--dark {
+  background-color: var(--grey-900);
+  color: var(--grey-100);
+}
+
+.badge.badge--primary {
+  background-color: var(--primary);
+  color: var(--grey-100);
+}
+
+.badge.badge--clearable {
+  cursor: default;
+}
+
+.badge.badge--clearable:hover {
+  background-color: var(--grey-200);
+  color: var(--primary);
+}
+
+.badge-remove {
+  background-color: var(--primary);
+  color: var(--grey-100);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  align-self: stretch;
+}
+
+.badge-remove:hover {
+  background-color: var(--grey-900);
+}
+
+.badge.badge--rounded {
+  border-radius: 15px;
+}
+
 .filter-panel {
   background-color: var(--white);
   width: 100%;
