@@ -164,6 +164,7 @@ body {
 
 /* Jobs container */
 .jobs-container {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -171,25 +172,48 @@ body {
 
 /* Job Card */
 
-.card_img {
+.job-img {
   width: 100px;
   height: 100px;
 }
 
-.card_info {
+.job-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-left: 20px;
 }
 
-.card_info_main {
+.job-info_main {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.card_tags {
+.job-info_main h3 {
+  color: var(--primary);
+}
+
+.job-info_position {
+  font-weight: var(--fw-bold);
+  font-size: 1.3rem;
+}
+
+.job-info_position:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.job-info_meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--grey-800);
+  font-size: 1.1rem;
+  font-weight: var(--fw-normal);
+}
+
+.job-tags {
   margin-left: auto;
   display: flex;
   align-items: center;
